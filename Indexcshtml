@@ -1,0 +1,18 @@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+<Center><h3> Enter Subject Marks</h3></Center>
+<br />
+<p>Subject 1 Marks :</p> @Html.TextBox("s1")
+<br />
+<p>Subject 2 Marks :</p> @Html.TextBox("s2")
+<br />
+<p>Subject 3 Marks :</p> @Html.TextBox("s3")
+<br />
+<input type="submit" value="CheckResult" />
+} @ViewData["sol"]
