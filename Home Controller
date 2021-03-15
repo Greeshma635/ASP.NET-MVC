@@ -1,0 +1,28 @@
+
+namespace WebApplication14.App_Data
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+          
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(int s1,int s2,int s3)
+        {
+            string res = string.Empty;
+            if (s1 > 34 && s2 > 34 && s3 > 34)
+            {
+                res = "You are passed";
+            }
+            else
+            {
+                res = "You are Failed";
+            }
+            ViewData["sol"] = res;
+            return View();
+        }
+    }
+}
