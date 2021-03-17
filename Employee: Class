@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebApplication26.Models
+{
+    public class Employee
+    {
+        [Required(ErrorMessage ="Employee Id Must")]
+        [Display(Name ="Emloyee ID")]
+        public int EmpId { get; set; }
+
+        [Required(ErrorMessage = "Employee Name Must")]
+        [Display(Name = "Emloyee Name")]
+        [MinLength(5,ErrorMessage ="Name length 5 or more characters")]
+        [MaxLength(10, ErrorMessage ="Nmae Length cannot be more than 10 characters")]
+        public String EmpName { get; set; }
+
+        [Required(ErrorMessage = "Employee Salary Must")]
+        [Display(Name = "Emloyee Salary")]
+        public int EmpSal { get; set; }
+    }
+}
