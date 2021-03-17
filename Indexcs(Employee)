@@ -1,0 +1,21 @@
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("true")
+    <br />
+    @Html.LabelFor(Model => Model.EmpId)
+    @Html.EditorFor(Model => Model.EmpId)
+    @Html.ValidationMessageFor(Model => Model.EmpId)
+    <br />
+    <br />
+    @Html.LabelFor(Model => Model.EmpName)
+    @Html.EditorFor(Model => Model.EmpName)
+    @Html.ValidationMessageFor(Model => Model.EmpName)
+    <br />
+    <br />
+    @Html.LabelFor(Model => Model.EmpSal)
+    @Html.EditorFor(Model => Model.EmpSal)
+    @Html.ValidationMessageFor(Model => Model.EmpSal)
+    <br />
+    <input type="submit" value="Register"/>
