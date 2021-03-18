@@ -1,0 +1,84 @@
+Data Source=OJAS-DD422;Initial Catalog=OjasDB;User ID=sa;Password=***********
+======================================================================================
+Scaffold-DbContext "Server =OJAS-DD422 ;Database =OjasDB; User ID = sa ;Password = Ojas@15251525;" Microsoft.EntityframeworkCore.SqlServer -OutputDir Models
+=============================================================================================
+
+Employee Controller
+
+public class EmployeeController : ControllerBase
+    {
+        private readonly IEmployeeService employeeService;
+        public EmployeeController(IEmployeeService employeeService)
+        {
+            this.employeeService = employeeService;
+        }
+        [HttpGet]
+        [Route("[action]")]
+        [Route("api/Employee/GetEmployee")]
+
+        public IEnumerable<Employee> GetEmployees()
+        {
+            return employeeService.GetEmployees();
+        }
+=============================================================================================
+Startup
+
+public void ConfigureServices(IServiceCollection services)
+        {
+
+            services.AddControllers();
+            services.AddDbContext<OjasDBContext>(options =>
+            options.UseSqlServer(Configuration["DbConnection"]));
+            services.AddTransient<IEmployeeService, EmployeeService>();
+        }
+==============================================================================================================
+appsettings.json
+
+"AllowedHosts": "*",
+  "DbConnection": "Server =OJAS-DD422 ;Database =OjasDB; User ID = sa ;Password = Ojas@15251525;"
+====================================================================================================================
+Employee Services
+
+namespace WebApplication2.Services
+{
+    public class EmployeeService : IEmployeeService
+    {
+        OjasDBContext dBContext;
+        public EmployeeService(OjasDBContext dBContext)
+        {
+            this.dBContext = dBContext;
+        }
+        public IEnumerable<Employee> GetEmployee()
+        {
+            return dBContext.Employees.ToList();
+        }
+=====================================================================================================================
+IEmployeeService
+
+namespace WebApplication2.IServices
+{
+   public interface IEmployeeService
+    {
+        IEnumerable<Employee> GetEmployee();
+        Employee GetEmployeeById(int id);
+        Employee AddEmployee(Employee employee);
+        Employee UpdateEmployee(Employee employee);
+        Employee DeleteEmployee(int id);
+    }
+}
+
+=========================================================================================================================================
+
+
+    
+
+Scaffold-DbContext "Server =OJAS-LD40\SQLEXPRESS ;Database =EmpDb ; User ID = sa ; Password = Cl!ttle@123#;" Microsoft.EntityframeworkCore.SqlServer -OutputDir Models
+
+
+
+Install-package Microsoft.EntityFrameworkCore.Sqlserver
+
+Install-package Microsoft.EntityFrameworkCore.Tools
+
+
+
